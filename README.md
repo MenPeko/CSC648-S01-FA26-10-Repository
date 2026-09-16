@@ -16,10 +16,18 @@
 3. Add ALL members of your team to this repository. For it to count, **they must
    ACCEPT the invite**.
 4. Fill out the table below
+| Student Name         | Student Email       | GitHub Username   | Student's role |
+| :------------------: | :-----------------: | :---------------: | :------------: |
+| Juan Navarro         | jnavarro14@sfsu.edu | menpeko           | Team Leader    |
+| Noah Heller          | cheller1@sfsu.edu   | noahdangerheller  | Database       |
+| Mustafa Albender     | malbender1@sfsu.edu |                   | Frontend       |
+| Amirshayan Hamidin   | ahamidin@sfsu.edu   | AmirshayanHamidin | Github-Master  |
+| Enkhbayar Idertsog   | eidertsog@sfsu.edu  | BlinkSkills       | Frontend       |
+| Rajveer Khurana      | rkhurana@sfsu.edu   | rajveer1203       | Backend        |
+| Justin Khyle Pailano | jpailano@sfsu.edu   | Justin-Khyle      | Backend        |
+| :------------------: | :-----------------: | :---------------: | :------------: |
 
-| Student Name | Student Email | GitHub Username | Student's role |
-| :----------: | :-----------: | :-------------: | :------------: |
-|   John Doe   | jdoe@sfsu.edu |      jdoe       |  Team Leader   |
+
 
 **NO code should be stored in the root of your repository. You may rename the
 `application/` folder to your team's application name if you'd like, but all the

@@ -7,9 +7,9 @@
 | :------------------: | :-----------------: | :---------------: | :------------: |
 | Juan Navarro         | jnavarro14@sfsu.edu | menpeko           | Team Leader    |
 | Noah Heller          | cheller1@sfsu.edu   | noahdangerheller  | Database       |
-| Mustafa Albender     | malbender1@sfsu.edu |                   | Frontend       |
+| Mustafa Albender     | malbender1@sfsu.edu | BlinkSkills       | Frontend       |
 | Amirshayan Hamidin   | ahamidin@sfsu.edu   | AmirshayanHamidin | Github-Master  |
-| Enkhbayar Idertsog   | eidertsog@sfsu.edu  | BlinkSkills       | Frontend       |
+| Enkhbayar Idertsog   | eidertsog@sfsu.edu  | Ienkhbayar        | Frontend       |
 | Rajveer Khurana      | rkhurana@sfsu.edu   | rajveer1203       | Backend        |
 | Justin Khyle Pailano | jpailano@sfsu.edu   | Justin-Khyle      | Backend        |
 

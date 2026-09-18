@@ -1,1 +1,37 @@
+# Secrets and local configuration
+.env
 *.env
+!.env.example
+credentials.local
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.Python
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Testing and tooling caches
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Database dumps and local data
+*.sqlite3
+*.db
+*.sql.gz
+
+# Logs
+*.log
+logs/
+
+# Editor and OS files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

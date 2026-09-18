@@ -24,3 +24,20 @@ WTForms==3.2.2
 # Testing and linting
 pytest==9.1.1
 ruff==0.16.7
+
+# Transitive dependencies, pinned so every machine and the server resolve to the
+# same versions. Regenerate after changing anything above with:
+#   pip install -r requirements.txt && pip freeze
+blinker==1.9.0
+cffi==2.1.1
+click==8.5.0
+greenlet==3.5.6
+iniconfig==2.3.0
+itsdangerous==2.2.0
+Mako==1.4.1
+MarkupSafe==3.0.3
+packaging==26.3
+pluggy==1.6.0
+pycparser==3.0
+Pygments==2.21.0
+typing_extensions==4.16.0

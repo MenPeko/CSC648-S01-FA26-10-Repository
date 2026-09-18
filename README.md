@@ -1,6 +1,6 @@
 # CSC648-S01-FA26-team10 Repository
 
-**Application URL: <https://example.com>**
+**Application URL: <http://ec2-13-52-242-59.us-west-1.compute.amazonaws.com>**
 
 ## Team 10 Positions 
 | Student Name         | Student Email       | GitHub Username   | Student's role |

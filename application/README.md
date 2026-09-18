@@ -125,10 +125,24 @@ sudo cp deploy/nginx-team10.conf /etc/nginx/sites-available/team10
 sudo ln -sf /etc/nginx/sites-available/team10 /etc/nginx/sites-enabled/team10
 sudo rm -f /etc/nginx/sites-enabled/default
 sudo nginx -t && sudo systemctl reload nginx
-
-# HTTPS
-sudo certbot --nginx -d <your-domain>
 ```
+
+The instance's security group must allow inbound TCP 80 (and 443 once HTTPS is
+set up) from `0.0.0.0/0`, plus 22 for SSH. The site is then reachable at
+<http://ec2-13-52-242-59.us-west-1.compute.amazonaws.com>.
+
+Two follow-ups on the address:
+
+- That auto-assigned hostname changes whenever the instance is stopped and
+  started. Allocate an **Elastic IP** and associate it with the instance so the
+  URL we hand in stays valid, then update `server_name` in
+  `deploy/nginx-team10.conf` and the Application URL in the root README.
+- HTTPS needs a domain we control. Let's Encrypt refuses to sign
+  `*.compute.amazonaws.com` names, so `certbot` cannot secure the address above.
+  Once we point a real domain at the Elastic IP, run:
+  ```bash
+  sudo certbot --nginx -d <our-domain>
+  ```
 
 To deploy an update after a pull request merges:
 

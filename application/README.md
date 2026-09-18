@@ -101,35 +101,32 @@ tech stack.
 
 ## Deploying to the server
 
-On the Ubuntu 24.04 EC2 instance, as a user with sudo:
+SSH into the Ubuntu 24.04 EC2 instance and run:
 
 ```bash
-# First time only
-sudo apt update && sudo apt install -y python3.12-venv nginx git
-sudo git clone https://github.com/MenPeko/CSC648-S01-FA26-10-Repository.git \
-    /srv/CSC648-S01-FA26-10-Repository
-cd /srv/CSC648-S01-FA26-10-Repository/application
-sudo python3.12 -m venv venv
-sudo ./venv/bin/pip install -r requirements.txt
-
-# Create the production secrets file (do not reuse local values)
-sudo cp ../.env.example ../.env && sudo nano ../.env
-sudo chown -R www-data:www-data /srv/CSC648-S01-FA26-10-Repository
-
-# Gunicorn under systemd
-sudo cp deploy/team10.service /etc/systemd/system/team10.service
-sudo systemctl daemon-reload && sudo systemctl enable --now team10
-
-# Nginx in front of Gunicorn
-sudo cp deploy/nginx-team10.conf /etc/nginx/sites-available/team10
-sudo ln -sf /etc/nginx/sites-available/team10 /etc/nginx/sites-enabled/team10
-sudo rm -f /etc/nginx/sites-enabled/default
-sudo nginx -t && sudo systemctl reload nginx
+curl -fsSL https://raw.githubusercontent.com/MenPeko/CSC648-S01-FA26-10-Repository/master/application/deploy/bootstrap.sh | sudo bash
 ```
 
-The instance's security group must allow inbound TCP 80 (and 443 once HTTPS is
-set up) from `0.0.0.0/0`, plus 22 for SSH. The site is then reachable at
+`deploy/bootstrap.sh` installs the packages, clones the repository to
+`/srv/CSC648-S01-FA26-10-Repository`, builds the virtual environment, generates a
+production `.env`, starts Gunicorn under systemd, installs the Nginx site, and
+verifies the result. It is safe to re-run: after the first run it updates the
+checkout to the latest `master`, so it doubles as the redeploy command.
+
+Re-run it after every pull request merge:
+
+```bash
+sudo bash /srv/CSC648-S01-FA26-10-Repository/application/deploy/bootstrap.sh
+```
+
+The script cannot change AWS settings. The instance's security group must allow
+inbound TCP 80 (and 443 once HTTPS is set up) from `0.0.0.0/0`, plus 22 for SSH.
+The site is then reachable at
 <http://ec2-13-52-242-59.us-west-1.compute.amazonaws.com>.
+
+To diagnose whether an unreachable site is AWS or the application: if the script
+reports `Nginx on 127.0.0.1:80 -> 200` but the public URL times out, the security
+group is the problem, not the code.
 
 Two follow-ups on the address:
 
@@ -143,15 +140,6 @@ Two follow-ups on the address:
   ```bash
   sudo certbot --nginx -d <our-domain>
   ```
-
-To deploy an update after a pull request merges:
-
-```bash
-cd /srv/CSC648-S01-FA26-10-Repository
-sudo git pull origin master
-sudo ./application/venv/bin/pip install -r application/requirements.txt
-sudo systemctl restart team10
-```
 
 Troubleshooting:
 

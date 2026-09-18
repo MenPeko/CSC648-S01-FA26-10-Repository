@@ -13,7 +13,13 @@ After=network.target
 User=www-data
 Group=www-data
 WorkingDirectory=/srv/CSC648-S01-FA26-10-Repository/application
+
+# Gunicorn puts its control socket under $HOME, and www-data's home is not
+# writable, so point HOME at a runtime directory systemd creates for us.
+RuntimeDirectory=team10
+Environment="HOME=/run/team10"
 Environment="PATH=/srv/CSC648-S01-FA26-10-Repository/application/venv/bin"
+Environment="PYTHONUNBUFFERED=1"
 ExecStart=/srv/CSC648-S01-FA26-10-Repository/application/venv/bin/gunicorn \
     --workers 3 \
     --bind 127.0.0.1:8000 \

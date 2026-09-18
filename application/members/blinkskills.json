@@ -1,0 +1,11 @@
+{
+  "name": "Mustafa Albender",
+  "github": "BlinkSkills",
+  "email": "malbender1@sfsu.edu",
+  "role": "Frontend",
+  "order": 3,
+  "headline": "Replace this line with your own one-sentence introduction.",
+  "bio": "Replace this paragraph with a short bio. Add your photo to application/app/static/img/members/ and set the \"photo\" field to its filename.",
+  "photo": null,
+  "links": {}
+}

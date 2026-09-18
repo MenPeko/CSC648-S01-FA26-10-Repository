@@ -1,0 +1,11 @@
+{
+  "name": "Juan Navarro",
+  "github": "menpeko",
+  "email": "jnavarro14@sfsu.edu",
+  "role": "Team Leader",
+  "order": 1,
+  "headline": "Coordinating Team 10 and keeping our milestones on track.",
+  "bio": "Computer science student at San Francisco State University. For CSC 648 I set up our deployment server, the Flask project structure, and the workflow the team uses to merge individual pages.",
+  "photo": null,
+  "links": {}
+}

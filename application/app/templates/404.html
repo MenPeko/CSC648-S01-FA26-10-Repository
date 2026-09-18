@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}Page not found{% endblock %}
+
+{% block content %}
+  <section class="intro">
+    <h1>404 &middot; Page not found</h1>
+    <p class="intro__lede">That page does not exist on Team {{ team.number }}'s site.</p>
+    <a class="button" href="{{ url_for('main.index') }}">Back to the team</a>
+  </section>
+{% endblock %}

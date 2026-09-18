@@ -1,0 +1,27 @@
+# Gunicorn service for the Team 10 site.
+# Install with:
+#   sudo cp deploy/team10.service /etc/systemd/system/team10.service
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable --now team10
+# Adjust User and WorkingDirectory if you clone somewhere other than /srv.
+
+[Unit]
+Description=CSC648 Team 10 Flask site (Gunicorn)
+After=network.target
+
+[Service]
+User=www-data
+Group=www-data
+WorkingDirectory=/srv/CSC648-S01-FA26-10-Repository/application
+Environment="PATH=/srv/CSC648-S01-FA26-10-Repository/application/venv/bin"
+ExecStart=/srv/CSC648-S01-FA26-10-Repository/application/venv/bin/gunicorn \
+    --workers 3 \
+    --bind 127.0.0.1:8000 \
+    --access-logfile - \
+    --error-logfile - \
+    wsgi:app
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,37 @@
+{# Example of a hand-written individual page. Copy this file to
+   members/<your-github-username-lowercase>.html and make it your own.
+   If you do not add a file here, member.html renders your JSON data instead. #}
+{% extends "base.html" %}
+
+{% block title %}{{ member.name }}{% endblock %}
+
+{% block content %}
+  <a class="back-link" href="{{ url_for('main.index') }}">&larr; Back to the team</a>
+
+  <article class="profile">
+    <img class="profile__photo"
+         src="{{ url_for('static', filename=member.photo) }}"
+         alt="{{ member.photo_alt }}">
+
+    <div class="profile__body">
+      <h1>{{ member.name }}</h1>
+      <p class="profile__role">{{ member.role }}</p>
+      <p class="profile__headline">{{ member.headline }}</p>
+      <p class="profile__bio">{{ member.bio }}</p>
+
+      <h2>What I set up for Milestone 0</h2>
+      <ul>
+        <li>Ubuntu 24.04 server on AWS EC2 running Nginx in front of Gunicorn</li>
+        <li>This Flask project, so each teammate can add a page without merge conflicts</li>
+        <li>The deployment and local test environment documented in the application README</li>
+      </ul>
+
+      <dl class="profile__facts">
+        <dt>GitHub</dt>
+        <dd><a href="https://github.com/{{ member.github }}">{{ member.github }}</a></dd>
+        <dt>Email</dt>
+        <dd><a href="mailto:{{ member.email }}">{{ member.email }}</a></dd>
+      </dl>
+    </div>
+  </article>
+{% endblock %}

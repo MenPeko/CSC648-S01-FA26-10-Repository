@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}{{ member.name }}{% endblock %}
+
+{% block content %}
+  <a class="back-link" href="{{ url_for('main.index') }}">&larr; Back to the team</a>
+
+  <article class="profile">
+    <img class="profile__photo"
+         src="{{ url_for('static', filename=member.photo) }}"
+         alt="{{ member.photo_alt }}">
+
+    <div class="profile__body">
+      <h1>{{ member.name }}</h1>
+      {% if member.role %}<p class="profile__role">{{ member.role }}</p>{% endif %}
+      {% if member.headline %}<p class="profile__headline">{{ member.headline }}</p>{% endif %}
+      {% if member.bio %}<p class="profile__bio">{{ member.bio }}</p>{% endif %}
+
+      <dl class="profile__facts">
+        <dt>GitHub</dt>
+        <dd><a href="https://github.com/{{ member.github }}">{{ member.github }}</a></dd>
+        {% if member.email %}
+          <dt>Email</dt>
+          <dd><a href="mailto:{{ member.email }}">{{ member.email }}</a></dd>
+        {% endif %}
+        {% for label, url in member.links.items() %}
+          <dt>{{ label }}</dt>
+          <dd><a href="{{ url }}">{{ url }}</a></dd>
+        {% endfor %}
+      </dl>
+    </div>
+  </article>
+{% endblock %}
